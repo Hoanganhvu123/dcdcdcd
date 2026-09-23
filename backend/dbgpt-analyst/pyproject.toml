@@ -1,0 +1,64 @@
+[project]
+name = "dbgpt-analyst"
+version = "0.8.1"
+description = "AI data analytic agent core ported from aianalytic (deepagents/LangGraph based)"
+authors = [
+    { name = "csunny", email = "cfqcsunny@gmail.com" }
+]
+license = "MIT"
+readme = "README.md"
+requires-python = ">= 3.11"
+dependencies = [
+    "dbgpt[client,simple_framework,framework,code]",
+    "dbgpt-serve",
+    "deepagents==0.7.5",
+    "langgraph==1.2.10",
+    "langchain-core==1.5.3",
+    "langchain-openai>=1.0.0",
+    "langgraph-checkpoint-postgres==3.1.2",
+    "sqlglot>=30.15.0",
+    "aiofiles>=23.0",
+    "pandas==2.2.3",
+    "markdown",
+    "python-docx",
+    "python-pptx",
+    "beautifulsoup4",
+    "xlsxwriter",
+    "jinja2",
+    "mcp>=2.0.0",
+    "httpx-sse>=0.4.3",
+    "dbgpt-sandbox",
+]
+
+[project.urls]
+Homepage = "https://github.com/eosphoros-ai/DB-GPT"
+Repository = "https://github.com/eosphoros-ai/DB-GPT.git"
+Issues = "https://github.com/eosphoros-ai/DB-GPT/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+]
+
+[tool.uv]
+managed = true
+dev-dependencies = []
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dbgpt_analyst"]
+exclude = [
+    "src/dbgpt_analyst/**/tests",
+    "src/dbgpt_analyst/**/tests/*",
+    "src/dbgpt_analyst/tests",
+    "src/dbgpt_analyst/tests/*",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "../dbgpt-serve/src", "../dbgpt-core/src", "../dbgpt-client/src"]
+testpaths = ["tests"]
+
+

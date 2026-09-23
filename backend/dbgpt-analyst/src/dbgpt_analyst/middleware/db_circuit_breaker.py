@@ -1,0 +1,38 @@
+"""middleware/db_circuit_breaker.py — Backward-compatible re-export from guard.db_circuit_breaker."""
+from dbgpt_analyst.guard.db_circuit_breaker import (
+    CircuitBreakerState,
+    DatabaseCircuitBreaker,
+    DatabaseCircuitBreakerOpenError,
+    DBCircuitBreaker,
+    SANDBOX_CIRCUIT_BREAKER_THRESHOLD,
+    SANDBOX_UNRECOVERABLE_MESSAGE,
+    SandboxCircuitBreakerMiddleware,
+    SandboxErrorStreak,
+    _CIRCUIT_BREAKER_MARKER,
+    _SANDBOX_ID_RE,
+    _SANDBOX_RECREATED_AFTER_CLIENT_ERROR,
+    _content_to_text,
+    _extract_sandbox_id,
+    _last_message_has_circuit_breaker_marker,
+    _sandbox_error_streak,
+    get_db_circuit_breaker,
+)
+
+__all__ = [
+    "CircuitBreakerState",
+    "DBCircuitBreaker",
+    "DatabaseCircuitBreaker",
+    "DatabaseCircuitBreakerOpenError",
+    "SANDBOX_CIRCUIT_BREAKER_THRESHOLD",
+    "SANDBOX_UNRECOVERABLE_MESSAGE",
+    "SandboxCircuitBreakerMiddleware",
+    "SandboxErrorStreak",
+    "_CIRCUIT_BREAKER_MARKER",
+    "_SANDBOX_ID_RE",
+    "_SANDBOX_RECREATED_AFTER_CLIENT_ERROR",
+    "_content_to_text",
+    "_extract_sandbox_id",
+    "_last_message_has_circuit_breaker_marker",
+    "_sandbox_error_streak",
+    "get_db_circuit_breaker",
+]

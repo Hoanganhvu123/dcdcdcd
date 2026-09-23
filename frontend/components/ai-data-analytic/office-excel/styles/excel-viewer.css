@@ -1,0 +1,278 @@
+/* Excel Artifact Grid — Geist Sans & Zinc Tokens */
+
+.ow-xl {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: var(--card);
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+}
+
+/* ── formula / filter bar ───────────────────────────────────────────────── */
+.ow-xl-bar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel);
+}
+
+.ow-xl-ref {
+  min-width: 44px;
+  padding: 3px 7px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--card);
+  color: var(--fg);
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.65625rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.ow-xl-fx {
+  flex: none;
+  color: var(--muted-fg);
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 0.75rem;
+  font-style: italic;
+  user-select: none;
+}
+
+.ow-xl-value {
+  flex: 1;
+  min-width: 0;
+  padding: 3px 9px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--card);
+  color: var(--fg);
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.65625rem;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ow-xl-value em { color: var(--muted-fg); }
+
+.ow-xl-search {
+  width: 128px;
+  padding: 3px 7px 3px 22px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--card);
+  color: var(--fg);
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 0.65625rem;
+  line-height: 1.4;
+}
+.ow-xl-search:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* ── grid ───────────────────────────────────────────────────────────────── */
+.ow-xl-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.ow-xl-scroll > .ow-xl-table { flex: none; }
+
+.ow-xl-scroll::after {
+  content: '';
+  flex: 1;
+  min-height: 0;
+  background:
+    linear-gradient(var(--panel) 0 0) left / 42px 100% no-repeat,
+    repeating-linear-gradient(
+      var(--card) 0 36px,
+      var(--hair) 36px 37px
+    );
+}
+
+.ow-xl-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 0.71875rem;
+  font-weight: 400;
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+
+.ow-xl-table th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 9px 11px;
+  border-bottom: 1px solid var(--border);
+  background: var(--muted);
+  color: var(--muted-fg);
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 0.65625rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+.ow-xl-table th:hover { color: var(--fg); }
+
+/* a numeric column is data, not a label: mono, right, no shouting */
+.ow-xl-table th.is-num {
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  text-transform: none;
+  letter-spacing: 0;
+  text-align: right;
+}
+
+.ow-xl-table td {
+  padding: 9px 11px;
+  border-bottom: 1px solid var(--hair);
+  color: var(--fg);
+  white-space: nowrap;
+  cursor: cell;
+}
+
+/* first data column reads as the row label */
+.ow-xl-table td.is-label { font-weight: 500; }
+
+.ow-xl-table td.is-num {
+  text-align: right;
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+}
+
+.ow-xl-table tbody tr:hover td { background: var(--muted); }
+
+.ow-xl-table tr.is-summary td {
+  background: var(--muted);
+  font-weight: 600;
+}
+
+.ow-xl-table td.is-selected {
+  position: relative;
+  z-index: 5;
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+/* row-number gutter */
+.ow-xl-gutter {
+  width: 42px;
+  min-width: 42px;
+  text-align: center !important;
+  color: var(--muted-fg);
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.625rem;
+  user-select: none;
+  cursor: default !important;
+}
+.ow-xl-table td.ow-xl-gutter { background: var(--panel); }
+
+.ow-xl-cell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+.ow-xl-cell > span:first-child { overflow: hidden; text-overflow: ellipsis; }
+
+.ow-xl-fxtag {
+  flex: none;
+  padding: 0 4px;
+  border-radius: 3px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.5625rem;
+  font-weight: 500;
+}
+
+/* ── sheet strip ────────────────────────────────────────────────────────── */
+.ow-xl-sheets {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 7px 9px;
+  border-top: 1px solid var(--border);
+  background: var(--panel);
+  overflow-x: auto;
+}
+
+.ow-xl-sheet {
+  flex: none;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 9px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--fg2);
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  line-height: 1;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+.ow-xl-sheet:hover { background: var(--card); color: var(--fg); }
+
+.ow-xl-sheet.is-active {
+  border-color: var(--border);
+  background: var(--card);
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.ow-xl-sheet-count {
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.625rem;
+  color: var(--muted-fg);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── empty state ────────────────────────────────────────────────────────── */
+.ow-xl-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 32px;
+  text-align: center;
+  background: var(--card);
+}
+.ow-xl-empty h3 {
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+.ow-xl-empty p {
+  max-width: 320px;
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--muted-fg);
+}

@@ -1,0 +1,206 @@
+/* ==========================================================================
+   PREMIUM AI REPORT STYLING & ANIMATIONS
+   ========================================================================== */
+
+:root {
+  --premium-navy: #18181b;
+  --premium-slate-light: #fafafa;
+  --premium-slate-border: #e4e4e7;
+  --premium-accent: var(--primary, #18181b);
+  --premium-shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --premium-shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.08);
+  --premium-shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -4px rgba(15, 23, 42, 0.1);
+  --premium-radius: 12px;
+}
+
+@keyframes reportFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.report-content {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  color: #52525b !important;
+  line-height: 1.75 !important;
+  font-size: 14px !important;
+  animation: reportFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+.report-content h1 {
+  font-size: 24px !important;
+  font-weight: 800 !important;
+  color: var(--premium-navy) !important;
+  margin-top: 1.5em !important;
+  margin-bottom: 0.8em !important;
+  letter-spacing: -0.025em !important;
+  border-bottom: 2px solid var(--premium-slate-border) !important;
+  padding-bottom: 0.4em !important;
+}
+
+.report-content h2 {
+  font-size: 19px !important;
+  font-weight: 700 !important;
+  color: #27272a !important;
+  margin-top: 1.4em !important;
+  margin-bottom: 0.6em !important;
+  letter-spacing: -0.02em !important;
+}
+
+.report-content h3 {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: #52525b !important;
+  margin-top: 1.2em !important;
+  margin-bottom: 0.4em !important;
+}
+
+.report-content p {
+  margin-bottom: 1.25em !important;
+  color: #52525b !important;
+  text-align: justify !important;
+}
+
+.report-content strong {
+  color: var(--premium-navy) !important;
+  font-weight: 600 !important;
+}
+
+.report-content table {
+  width: 100% !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border: 1px solid var(--premium-slate-border) !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  margin: 1.6em 0 !important;
+  box-shadow: var(--premium-shadow-sm) !important;
+  transition: box-shadow 0.2s ease !important;
+}
+
+.report-content table:hover {
+  box-shadow: var(--premium-shadow-md) !important;
+}
+
+.report-content th {
+  background-color: var(--premium-navy) !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  text-align: left !important;
+  padding: 12px 16px !important;
+  font-size: 12.5px !important;
+  border-bottom: 1px solid #27272a !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+.report-content td {
+  padding: 11px 16px !important;
+  font-size: 13px !important;
+  border-bottom: 1px solid #f4f4f5 !important;
+  color: #52525b !important;
+  background-color: #ffffff !important;
+  transition: background-color 0.15s ease !important;
+}
+
+.report-content tr:nth-child(even) td {
+  background-color: var(--premium-slate-light) !important;
+}
+
+.report-content tr:hover td {
+  background-color: #f4f4f5 !important;
+}
+
+.report-content tr:last-child td {
+  border-bottom: none !important;
+}
+
+.report-content svg {
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 8px !important;
+  padding: 8px !important;
+  background-color: #ffffff !important;
+  border: 1px solid var(--premium-slate-border) !important;
+  box-shadow: var(--premium-shadow-sm) !important;
+}
+
+.war-room-panel {
+  box-shadow: -4px 0 20px rgba(15, 23, 42, 0.05) !important;
+}
+
+.step-running {
+  border-color: hsl(var(--sc-foreground) / 0.4) !important;
+  background-color: hsl(var(--sc-muted) / 0.3) !important;
+  animation: pulseRunningBorder 2s infinite ease-in-out !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05) !important;
+}
+
+.step-done {
+  border-color: hsl(var(--sc-border)) !important;
+  background-color: hsl(var(--sc-muted) / 0.2) !important;
+  transition: all 0.25s ease !important;
+}
+
+.step-done:hover {
+  background-color: hsl(var(--sc-muted) / 0.4) !important;
+}
+
+.step-error {
+  border-color: hsl(var(--sc-border)) !important;
+  background-color: hsl(var(--sc-muted) / 0.3) !important;
+  animation: shakeStep 0.4s ease-in-out !important;
+}
+
+@keyframes pulseRunningBorder {
+  0%, 100% {
+    border-color: hsl(var(--sc-foreground) / 0.3);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.02);
+  }
+  50% {
+    border-color: hsl(var(--sc-foreground) / 0.7);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@keyframes shakeStep {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-4px); }
+  40%, 80% { transform: translateX(4px); }
+}
+
+.animate-spin {
+  animation: spin 0.85s linear infinite !important;
+}
+
+.animate-pulse {
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
+}
+
+.report-skeleton-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.diff-del {
+  text-decoration: line-through !important;
+  color: hsl(var(--sc-muted-foreground)) !important;
+  background-color: hsl(var(--sc-muted) / 0.5) !important;
+  padding: 0 2px !important;
+  border-radius: 2px !important;
+}
+
+.diff-ins {
+  color: hsl(var(--sc-foreground)) !important;
+  background-color: hsl(var(--sc-muted) / 0.5) !important;
+  text-decoration: none !important;
+  padding: 0 2px !important;
+  border-radius: 2px !important;
+}

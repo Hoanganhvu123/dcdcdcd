@@ -1,0 +1,388 @@
+/* ==========================================================================
+   KIMI DOCX ARTIFACT SYSTEM (Word Document & A4 Sheet Styles)
+   ========================================================================== */
+
+/* A4 Viewport Container */
+.kimi-a4-viewport {
+  flex: 1;
+  overflow: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 0;
+  position: relative;
+  background-color: var(--kimi-bg-canvas);
+}
+
+@media (min-width: 640px) {
+  .kimi-a4-viewport {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .kimi-a4-viewport {
+    padding: 2.5rem;
+  }
+}
+
+/* A4 Document Paper Sheet */
+.kimi-doc-page {
+  width: 100%;
+  max-width: 810px;
+  min-height: 80vh;
+  background-color: #ffffff;
+  color: #18181b;
+  border: 1px solid #e4e4e7;
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Paper Metadata Header Bar */
+.kimi-doc-meta-bar {
+  padding: 0.75rem 2rem;
+  border-bottom: 1px solid #e4e4e7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #71717a;
+  font-family: var(--kimi-font-mono);
+  user-select: none;
+  background-color: rgba(244, 244, 245, 0.8);
+}
+
+@media (min-width: 768px) {
+  .kimi-doc-meta-bar {
+    padding: 0.75rem 3rem;
+  }
+}
+
+/* Document Header Section */
+.kimi-doc-header {
+  border-bottom: 1px solid #e4e4e7;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.kimi-doc-main-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #18181b;
+  line-height: 1.3;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .kimi-doc-main-title {
+    font-size: 1.875rem;
+  }
+}
+
+.kimi-doc-format-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.125rem 0.625rem;
+  border-radius: 0.25rem;
+  background-color: hsl(var(--sc-muted));
+  color: hsl(var(--sc-foreground));
+  border: 1px solid hsl(var(--sc-border));
+  font-family: var(--kimi-font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Body Typography */
+.kimi-doc-body {
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-family: var(--kimi-font-sans);
+  color: #18181b;
+  line-height: 1.65;
+  font-size: 0.925rem;
+}
+
+@media (min-width: 768px) {
+  .kimi-doc-body {
+    padding: 3rem;
+  }
+}
+
+/* Table of Contents (TOC) Floating Rail */
+.kimi-toc-rail {
+  display: none;
+  flex-direction: column;
+  width: 14rem;
+  border-right: 1px solid var(--kimi-border);
+  background-color: var(--kimi-bg-sidebar);
+  padding: 1rem;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+  overflow-y: auto;
+}
+
+@media (min-width: 1280px) {
+  .kimi-toc-rail {
+    display: flex;
+  }
+}
+
+.kimi-toc-item {
+  width: 100%;
+  text-align: left;
+  padding: 0.375rem 0.5rem;
+  border-radius: 0.375rem;
+  transition: color 0.15s ease, background-color 0.15s ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: transparent;
+  border: none;
+  color: var(--kimi-text-muted);
+  cursor: pointer;
+}
+
+.kimi-toc-item:hover {
+  color: var(--kimi-text-main);
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.kimi-toc-item--active {
+  background-color: hsl(var(--sc-muted));
+  color: hsl(var(--sc-foreground));
+  font-weight: 600;
+  border-left: 2px solid hsl(var(--sc-foreground));
+}
+
+/* Continuous Footer Bar */
+.kimi-doc-footer-bar {
+  padding: 0.75rem 2rem;
+  border-top: 1px dashed #e4e4e7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #71717a;
+  font-family: var(--kimi-font-mono);
+  user-select: none;
+  background-color: rgba(244, 244, 245, 0.8);
+}
+
+@media (min-width: 768px) {
+  .kimi-doc-footer-bar {
+    padding: 0.75rem 3rem;
+  }
+}
+
+/* Tesla Tearsheet & Financial Report Specific Exhibits & Tables */
+.doc-header-blue {
+  background: linear-gradient(135deg, #27272a, #18181b) !important;
+  color: #ffffff !important;
+  padding: 1.25rem 1.625rem 1.125rem 1.625rem !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 0.625rem !important;
+  border-radius: 0.375rem 0.375rem 0 0 !important;
+}
+
+.doc-header-blue h1 {
+  margin: 0 !important;
+  font-size: 1.25rem !important;
+  letter-spacing: 0.0125em !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+.doc-header-blue .ticker {
+  font-size: 0.75rem !important;
+  color: #d4d4d8 !important;
+  font-weight: 600 !important;
+  margin-top: 0.125rem !important;
+}
+
+.exhibits {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.375rem;
+  flex-wrap: wrap;
+}
+
+.exhibit {
+  flex: 1;
+  min-width: 17.5rem;
+  border: 1px solid #d4d4d8;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  background: #ffffff;
+}
+
+.exhibit-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #18181b;
+  margin-bottom: 0.5rem;
+}
+
+.chart-src, .table-src {
+  font-size: 0.625rem;
+  color: #8a8a8a;
+  font-style: italic;
+  margin-top: 0.375rem;
+}
+
+table.dat {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.70625rem;
+}
+
+table.dat td {
+  padding: 0.375rem 0.25rem;
+  border-bottom: 1px solid #e4e4e7;
+}
+
+table.dat td.lbl {
+  color: #5a5a5a;
+  width: 36%;
+}
+
+table.dat td.val {
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: right;
+  width: 14%;
+}
+
+.inv-logic-title {
+  font-size: 0.84375rem;
+  font-weight: 800;
+  color: #18181b;
+  border-bottom: 2px solid #18181b;
+  padding-bottom: 0.375rem;
+  margin-bottom: 0.875rem;
+}
+
+.inv-cols {
+  display: flex;
+  gap: 1.375rem;
+}
+
+.inv-col {
+  flex: 1;
+  font-size: 0.7125rem;
+  line-height: 1.55;
+}
+
+.inv-col + .inv-col {
+  border-left: 1px solid #d4d4d8;
+  padding-left: 1.375rem;
+}
+
+.inv-col h4 {
+  font-size: 0.75rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem 0;
+}
+
+.inv-col.short h4 {
+  color: #27272a;
+}
+
+.inv-col.long h4 {
+  color: #18181b;
+}
+
+.inv-item {
+  margin-bottom: 0.5625rem;
+}
+
+.inv-item b {
+  color: #111;
+}
+
+/* Dark Mode Enhancements for Kimi Docx Paper & Elements */
+.dark .kimi-a4-viewport {
+  background-color: var(--kimi-bg-canvas, #09090b);
+}
+
+.dark .kimi-doc-page {
+  background-color: #ffffff;
+  color: #18181b;
+  border-color: #27272a;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.dark .kimi-doc-meta-bar,
+.dark .kimi-doc-footer-bar {
+  border-color: #27272a;
+  color: #a1a1aa;
+  background-color: rgba(24, 24, 27, 0.8);
+}
+
+.dark .kimi-doc-header {
+  border-bottom-color: #27272a;
+}
+
+.dark .kimi-doc-main-title {
+  color: #f4f4f5;
+}
+
+.dark .kimi-doc-body {
+  color: #18181b;
+}
+
+.dark .kimi-toc-rail {
+  border-right-color: #27272a;
+  background-color: #18181b;
+}
+
+.dark .kimi-toc-item:hover {
+  color: #f4f4f5;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.dark .exhibit {
+  border-color: #27272a;
+  background: #18181b;
+}
+
+.dark .exhibit-title,
+.dark .inv-logic-title {
+  color: #fafafa;
+}
+
+.dark .inv-logic-title {
+  border-bottom-color: #3f3f46;
+}
+
+.dark table.dat td {
+  border-bottom-color: #27272a;
+}
+
+.dark table.dat td.lbl {
+  color: #a1a1aa;
+}
+
+.dark table.dat td.val {
+  color: #f4f4f5;
+}
+
+.dark .inv-item b {
+  color: #f4f4f5;
+}

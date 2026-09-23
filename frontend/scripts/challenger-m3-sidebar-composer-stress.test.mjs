@@ -1,0 +1,1 @@
+../tests/challenger-m3-sidebar-composer-stress.test.mjs

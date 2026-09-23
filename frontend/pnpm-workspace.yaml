@@ -1,0 +1,5 @@
+allowBuilds:
+  core-js: set this to true or false
+  unrs-resolver: set this to true or false
+minimumReleaseAgeExclude:
+  - antd@6.6.0

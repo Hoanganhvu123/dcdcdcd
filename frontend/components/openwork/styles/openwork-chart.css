@@ -1,0 +1,260 @@
+/* ---------------------------------------------------------------------------
+ * Chart viewer — Classical, hard px.
+ *
+ * Type rungs come from openwork-chat.css (.ow-label / .ow-meta / .ow-part-title);
+ * this sheet only carries what is specific to the plot: the palette the bars and
+ * the legend must agree on, and the canvas rhythm.
+ * ------------------------------------------------------------------------- */
+
+.ow-chart-card {
+  background: var(--bg-surface, #FFFFFF);
+  border: 1px solid var(--border-subtle, #E6E4DD);
+  border-radius: 7px;
+  padding: 1.15rem;
+}
+
+.ow-chart-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.15rem;
+  padding-bottom: 0.875rem;
+  margin-bottom: 0.875rem;
+  border-bottom: 1px solid var(--border-subtle, #E6E4DD);
+}
+
+.ow-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+}
+
+.ow-chart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.2875rem;
+}
+
+.ow-chart-swatch {
+  width: 0.575rem;
+  height: 0.575rem;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* Four series, four values. Accent first: the leading column is the story. */
+.ow-chart-s0 { background: var(--accent, #CC785C); fill: var(--accent, #CC785C); }
+.ow-chart-s1 { background: color-mix(in srgb, var(--accent, #CC785C) 55%, transparent); fill: color-mix(in srgb, var(--accent, #CC785C) 55%, transparent); }
+.ow-chart-s2 { background: color-mix(in srgb, var(--color-text, #201f1d) 72%, transparent); fill: color-mix(in srgb, var(--color-text, #201f1d) 72%, transparent); }
+.ow-chart-s3 { background: color-mix(in srgb, var(--color-text, #201f1d) 32%, transparent); fill: color-mix(in srgb, var(--color-text, #201f1d) 32%, transparent); }
+
+.ow-chart-svg { width: 100%; height: auto; display: block; user-select: none; }
+.ow-chart-svg .ow-chart-grid { stroke: currentColor; stroke-opacity: 0.08; stroke-dasharray: 4 4; }
+.ow-chart-svg .ow-chart-axis {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.6875rem;
+  fill: color-mix(in srgb, var(--color-text, #201f1d) 55%, transparent);
+}
+.ow-chart-svg .ow-chart-tick {
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-size: 0.6875rem;
+  fill: var(--color-text, #201f1d);
+}
+
+.ow-chart-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.575rem;
+  margin-top: 1.15rem;
+  padding-top: 0.875rem;
+  border-top: 1px solid var(--border-subtle, #E6E4DD);
+}
+
+.ow-chart-stat {
+  padding: 0.575rem;
+  border: 1px solid var(--border-subtle, #E6E4DD);
+  border-radius: 4px;
+  text-align: center;
+}
+
+.ow-chart-stat-value {
+  display: block;
+  margin-top: 0.2875rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text, #201f1d);
+}
+
+.ow-chart-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+.ow-chart-table th {
+  text-align: left;
+  padding: 0.575rem;
+  border-bottom: 1px solid var(--border-subtle, #E6E4DD);
+}
+.ow-chart-table td {
+  padding: 0.575rem;
+  border-bottom: 1px solid var(--border-subtle, #E6E4DD);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.8125rem;
+}
+.ow-chart-table td:first-child { font-family: var(--font-sans, system-ui, sans-serif); }
+
+/* ---------------------------------------------------------------------------
+ * Shell — the chart pane wears the same 38px toolbar over a 12px-gutter body
+ * as Excel, Word and Code, so switching tabs does not move the controls.
+ * ------------------------------------------------------------------------- */
+
+.ow-chart {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: var(--bg-base, #FAF9F5);
+}
+
+.ow-chart-bar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--border-subtle, #E6E4DD);
+  background: var(--bg-surface, #FFFFFF);
+}
+
+.ow-chart-seg {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--border-subtle, #E6E4DD);
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.ow-chart-seg-btn {
+  height: 20px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--color-text-muted, #7d7979);
+  font-family: inherit;
+  font-size: 0.6875rem;
+  line-height: 1;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease;
+}
+.ow-chart-seg-btn:hover { color: var(--color-text, #201f1d); }
+.ow-chart-seg-btn.is-active {
+  background: var(--bg-muted, #F3F2EC);
+  color: var(--color-text, #201f1d);
+}
+.ow-chart-seg-btn:focus-visible {
+  outline: 2px solid var(--accent, #CC785C);
+  outline-offset: 1px;
+}
+
+.ow-chart-sep {
+  margin-left: auto;
+  width: 1px;
+  height: 16px;
+  flex: none;
+  background: var(--border-subtle, #E6E4DD);
+}
+
+.ow-chart-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 26px;
+  min-width: 26px;
+  padding: 0 6px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--color-text-secondary, #605d5d);
+  font-family: inherit;
+  font-size: 0.6875rem;
+  line-height: 1;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+.ow-chart-btn:hover {
+  background: #ffffff;
+  border-color: var(--border-subtle, #E6E4DD);
+  color: var(--color-text, #201f1d);
+}
+.ow-chart-btn:focus-visible {
+  outline: 2px solid var(--accent, #CC785C);
+  outline-offset: 1px;
+}
+
+.ow-chart-zoom {
+  min-width: 42px;
+  text-align: center;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.65625rem;
+  line-height: 1;
+  color: var(--color-text-muted, #7d7979);
+  font-variant-numeric: tabular-nums;
+  user-select: none;
+}
+
+.ow-chart-canvas {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.ow-chart-stage {
+  width: 100%;
+  max-width: 640px;
+  transform-origin: top center;
+  transition: transform 150ms ease;
+}
+
+/* Code view: the same charcoal skin the Code pane uses. */
+.ow-chart-code {
+  margin: 0;
+  padding: 0.875rem;
+  border-radius: 7px;
+  background: var(--bg-surface, #21201D);
+  color: var(--fg-primary, #F4F3ED);
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.71875rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+
+/* Nothing numeric in the artifact. Say so; do not draw a chart of nothing. */
+.ow-chart-empty {
+  margin: auto;
+  max-width: 320px;
+  text-align: center;
+}
+.ow-chart-empty-title {
+  font-family: var(--font-heading, 'Cormorant Garamond', serif);
+  font-size: 1.25rem;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  color: var(--color-text, #201f1d);
+}
+.ow-chart-empty-text {
+  margin-top: 0.575rem;
+  font-family: var(--font-serif, 'Lora', serif);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--color-text-muted, #7d7979);
+}

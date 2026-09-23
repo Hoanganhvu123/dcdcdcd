@@ -1,0 +1,22 @@
+{
+  "name": "db-gpt-e2e",
+  "version": "0.1.0",
+  "private": true,
+  "description": "DB-GPT End-to-End Test Infrastructure & Playwright Test Suite",
+  "scripts": {
+    "test": "playwright test",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:routes": "playwright test e2e/01-routes-navigation.spec.ts",
+    "test:e2e:theme": "playwright test e2e/02-theme-viewport.spec.ts",
+    "test:e2e:backend": "playwright test e2e/03-backend-integration.spec.ts",
+    "test:e2e:workflows": "playwright test e2e/04-e2e-workflows-visual.spec.ts",
+    "test:e2e:report": "playwright show-report e2e-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^20.5.7",
+    "typescript": "^5.1.3"
+  }
+}

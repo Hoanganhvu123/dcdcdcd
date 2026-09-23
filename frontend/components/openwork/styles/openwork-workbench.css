@@ -1,0 +1,465 @@
+/* OpenWork Workbench Panel — Geist Sans & Zinc Design Tokens */
+
+/* ── header row ─────────────────────────────────────────────────────────── */
+.ow-wb-head {
+  height: 44px;
+  min-height: 44px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 0 8px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel);
+}
+
+/* the tab strip is ONE pill, not a row of bordered chips */
+.ow-wb-tabgroup {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  border-radius: 8px;
+  background: var(--muted);
+  overflow-x: auto;
+  scrollbar-width: none;
+  /* PanelTabList ships min-w-max; without this the pill cannot scroll. */
+  min-width: 0;
+  max-width: 100%;
+}
+.ow-wb-tabgroup::-webkit-scrollbar { display: none; }
+
+.ow-wb-tab {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 7px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--fg2);
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1;
+  box-shadow: none;
+  white-space: nowrap;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+.ow-wb-tab:hover { color: var(--fg); background: transparent; }
+
+/* the close button sits absolute at right:3px; give it a gutter so it never
+   lands on the label — same reason the old pl/pr split existed. */
+.ow-wb-tab--closable { padding-right: 18px; }
+
+.ow-wb-tab.is-active {
+  background: var(--card);
+  color: var(--fg);
+  box-shadow: var(--shadow);
+}
+
+.ow-wb-tab-icon { flex: none; color: var(--muted-fg); }
+.ow-wb-tab.is-active .ow-wb-tab-icon { color: var(--accent); }
+
+.ow-wb-tabclose {
+  right: 3px;
+  padding: 1px;
+  border-radius: 4px;
+}
+
+/* ── right-hand action buttons ──────────────────────────────────────────── */
+.ow-wb-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: none;
+}
+
+.ow-wb-iconbtn {
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted-fg);
+  transition: background-color 120ms ease, color 120ms ease;
+}
+.ow-wb-iconbtn:hover {
+  background: var(--muted);
+  color: var(--fg);
+}
+.ow-wb-iconbtn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* ── meta strip: filename · version · sync state · time ─────────────────── */
+.ow-wb-meta {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 4px 10px;
+  min-height: 28px;
+  border-bottom: 1px solid var(--hair);
+  background: var(--card);
+}
+
+.ow-wb-meta-left {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+
+.ow-wb-meta-name {
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--fg);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ow-wb-badge {
+  flex: none;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 6px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--muted-fg);
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.625rem;
+  font-weight: 500;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.ow-wb-badge--accent {
+  border-color: var(--accent-bd);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.ow-wb-meta-right {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.65625rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--muted-fg);
+  font-variant-numeric: tabular-nums;
+}
+
+.ow-wb-sync { display: inline-flex; align-items: center; gap: 5px; }
+
+.ow-wb-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: var(--ok);
+}
+
+/* ── body + card ────────────────────────────────────────────────────────── */
+.ow-wb-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  overflow: hidden;
+  background: var(--panel);
+}
+
+.ow-wb-card {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+/* ── Panes ────────────────────────────────────────────────────────────────
+   Every non-viewer tab (code, preview, diff, terminal) is the same object:
+   a 38px header strip over a scrolling body. Two skins only — paper and
+   charcoal — so the console tabs stop inventing their own zinc palette. */
+.ow-wb-pane {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--card);
+}
+
+.ow-wb-pane--dark {
+  background: var(--code);
+  color: var(--code-fg);
+}
+
+.ow-wb-pane-head {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 9px;
+  height: 38px;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--hair);
+  background: var(--panel);
+}
+
+.ow-wb-pane--dark .ow-wb-pane-head {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  background: var(--bg-surface, #21201D);
+}
+
+.ow-wb-pane-title {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 0.75rem;
+  line-height: 1;
+  font-weight: 500;
+  color: var(--fg);
+}
+
+.ow-wb-pane--dark .ow-wb-pane-title { color: var(--fg-primary, #F4F3ED); }
+
+.ow-wb-pane-title > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ow-wb-pane-icon { flex: none; color: var(--muted-fg); }
+.ow-wb-pane--dark .ow-wb-pane-icon { color: var(--fg-secondary, #A3A29B); }
+
+/* Status pill: the only place in the panel that carries a semantic colour. */
+.ow-wb-chip {
+  flex: none;
+  padding: 3px 7px;
+  border-radius: 4px;
+  background: var(--muted);
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.65625rem;
+  line-height: 1;
+  color: var(--fg2);
+}
+
+.ow-wb-pane--dark .ow-wb-chip {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--fg-secondary, #A3A29B);
+}
+
+.ow-wb-chip--live {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: transparent;
+  color: var(--ok);
+}
+
+.ow-wb-pane--dark .ow-wb-chip--live {
+  background: transparent;
+  color: var(--ok);
+}
+
+.ow-wb-copy {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  height: 24px;
+  padding: 0 9px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 0.6875rem;
+  line-height: 1;
+  color: var(--fg-primary, #F4F3ED);
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+
+.ow-wb-copy:hover { background: rgba(255, 255, 255, 0.16); }
+.ow-wb-copy:disabled { opacity: 0.4; pointer-events: none; }
+.ow-wb-copy:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.ow-wb-pane-body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 14px;
+}
+
+/* Code / diff / log bodies all render preformatted mono text. */
+.ow-wb-code {
+  margin: 0;
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.71875rem;
+  line-height: 1.6;
+  color: var(--fg-primary, #F4F3ED);
+  white-space: pre-wrap;
+}
+
+.ow-wb-log {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.71875rem;
+  line-height: 1.6;
+}
+
+.ow-wb-log p { margin: 0; color: var(--fg-secondary, #A3A29B); }
+.ow-wb-log p.is-dim { color: #6f6e6c; }
+.ow-wb-log p.is-good { color: var(--ok); }
+
+.ow-wb-diff-add {
+  margin: 0 0 9px;
+  padding: 7px 9px;
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  border-radius: 4px;
+  background: rgba(52, 211, 153, 0.08);
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.71875rem;
+  line-height: 1.5;
+  color: var(--ok);
+}
+
+/* Empty states inside a pane. */
+.ow-wb-pane-empty {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 32px;
+  text-align: center;
+}
+
+.ow-wb-pane-empty-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--fg-primary, #F4F3ED);
+}
+
+.ow-wb-pane-empty-title {
+  margin: 0;
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 1.25rem;
+  line-height: 1.25;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+
+.ow-wb-pane-empty-text {
+  max-width: 380px;
+  margin: 0;
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--muted-fg);
+}
+
+/* Preview card — paper skin, so it reads as a document, not a console. */
+.ow-wb-preview-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  padding: 14px;
+}
+
+.ow-wb-preview-card {
+  width: 100%;
+  max-width: 640px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--panel);
+}
+
+.ow-wb-preview-title {
+  margin: 0 0 4px;
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 1.375rem;
+  line-height: 1.25;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--fg);
+}
+
+.ow-wb-preview-sub {
+  margin: 0 0 14px;
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--fg2);
+}
+
+.ow-wb-preview-pre {
+  max-height: 300px;
+  margin: 0;
+  padding: 11px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--card);
+  overflow: auto;
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.71875rem;
+  line-height: 1.6;
+  color: var(--fg);
+  text-align: left;
+  white-space: pre-wrap;
+}
+
+.ow-wb-preview-empty {
+  margin: 0;
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 0.75rem;
+  line-height: 1;
+  color: var(--muted-fg);
+}
+
+.ow-wb-ok { color: var(--ok); }

@@ -1,0 +1,1 @@
+../tests/sidebar-composer-fidelity.check.mjs

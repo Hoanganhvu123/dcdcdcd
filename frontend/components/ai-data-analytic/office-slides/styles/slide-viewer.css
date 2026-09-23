@@ -1,0 +1,253 @@
+.ow-sl {
+  --sl-stage: var(--card);
+  --sl-panel: var(--panel);
+  --sl-raised: var(--muted);
+  --sl-line: var(--border);
+  --sl-fg: var(--fg);
+  --sl-fg-dim: var(--muted-fg);
+  --sl-accent: var(--accent);
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: var(--sl-stage);
+  color: var(--sl-fg);
+  font-family: var(--font-sans, "Instrument Sans", ui-sans-serif, system-ui, sans-serif);
+  user-select: none;
+}
+
+.ow-sl-stage {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ── thumbnail rail ─────────────────────────────────────────────────────── */
+.ow-sl-rail {
+  flex: none;
+  width: 186px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 10px;
+  overflow-y: auto;
+  border-right: 1px solid var(--sl-line);
+  background: var(--sl-panel);
+}
+
+.ow-sl-thumb {
+  padding: 7px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+.ow-sl-thumb:hover { background: var(--sl-raised); }
+
+.ow-sl-thumb.is-active {
+  border-color: var(--sl-accent);
+  background: var(--sl-raised);
+}
+
+.ow-sl-thumb-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin-bottom: 6px;
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.625rem;
+  line-height: 1;
+  color: var(--sl-fg-dim);
+  font-variant-numeric: tabular-nums;
+}
+.ow-sl-thumb-num { font-weight: 600; color: var(--sl-fg); }
+
+.ow-sl-thumb-layout {
+  padding: 2px 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.07);
+  font-size: 0.5625rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ow-sl-thumb-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #000;
+  position: relative;
+  pointer-events: none;
+}
+
+.ow-sl-thumb-title {
+  margin-top: 6px;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--sl-fg-dim);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ow-sl-thumb.is-active .ow-sl-thumb-title { color: var(--sl-fg); }
+
+/* ── centre viewport ────────────────────────────────────────────────────── */
+.ow-sl-viewport {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  overflow: hidden;
+  background: var(--sl-stage);
+}
+
+/* ── player strip ───────────────────────────────────────────────────────── */
+.ow-sl-player {
+  flex: none;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 9px;
+  padding: 0 11px;
+  border-top: 1px solid var(--sl-line);
+  background: var(--sl-panel);
+}
+
+.ow-sl-btn {
+  height: 26px;
+  width: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--sl-fg-dim);
+  transition: background-color 120ms ease, color 120ms ease;
+}
+.ow-sl-btn:hover { background: var(--sl-raised); color: var(--sl-fg); }
+.ow-sl-btn:focus-visible {
+  outline: 2px solid var(--sl-accent);
+  outline-offset: 1px;
+}
+
+.ow-sl-play {
+  height: 26px;
+  width: auto;
+  gap: 5px;
+  padding: 0 9px;
+  background: var(--sl-raised);
+  color: var(--sl-fg);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1;
+}
+.ow-sl-play:hover { background: #27272a; }
+.ow-sl-play .ow-sl-play-icon { color: var(--sl-accent); }
+
+.ow-sl-dots {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  max-width: 260px;
+  padding: 0 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.ow-sl-dots::-webkit-scrollbar { display: none; }
+
+.ow-sl-dot {
+  flex: none;
+  height: 5px;
+  width: 7px;
+  border: none;
+  border-radius: 9999px;
+  background: var(--sl-line);
+  transition: width 140ms ease, background-color 140ms ease;
+}
+.ow-sl-dot:hover { background: #3f3f46; }
+.ow-sl-dot.is-active { width: 20px; background: var(--sl-accent); }
+
+.ow-sl-count {
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.65625rem;
+  line-height: 1;
+  color: var(--sl-fg-dim);
+  font-variant-numeric: tabular-nums;
+}
+.ow-sl-count strong { color: var(--sl-fg); font-weight: 600; }
+
+/* ── empty state ────────────────────────────────────────────────────────── */
+.ow-sl-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 32px;
+  text-align: center;
+  background: var(--panel);
+  color: var(--muted-fg);
+}
+.ow-sl-empty h3 {
+  margin: 0;
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+.ow-sl-empty p {
+  margin: 0;
+  max-width: 320px;
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--muted-fg);
+}
+
+/* ── Slide stage, Geist ladder ──────────────────────────────────────── */
+[data-testid="slide-canvas-stage"] {
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+}
+
+[data-testid="slide-canvas-stage"] h1,
+[data-testid="slide-canvas-stage"] h2,
+[data-testid="slide-canvas-stage"] h3,
+[data-testid="slide-canvas-stage"] h4,
+[data-testid="slide-canvas-stage"] blockquote,
+[data-testid="slide-canvas-stage"] .font-heading {
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+/* Small caps labels, markers and code stay on the mono faces. */
+[data-testid="slide-canvas-stage"] .uppercase,
+[data-testid="slide-canvas-stage"] .font-mono {
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+}
+
+[data-testid="slide-canvas-stage"] .text-zinc-100,
+[data-testid="slide-canvas-stage"] .text-zinc-200,
+[data-testid="slide-canvas-stage"] .text-zinc-300 {
+  color: var(--sl-fg, #fafafa);
+}
+
+[data-testid="slide-canvas-stage"] .text-zinc-400,
+[data-testid="slide-canvas-stage"] .text-zinc-500 {
+  color: var(--sl-fg-dim, #a1a1aa);
+}

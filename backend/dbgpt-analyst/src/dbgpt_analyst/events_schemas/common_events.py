@@ -1,0 +1,62 @@
+"""events_schemas/common_events.py — Backward-compatible re-export from events.streaming_events."""
+from dbgpt_analyst.events.streaming_events import (
+    AnswerDeltaEvent,
+    ApprovalRequestEvent,
+    ClarificationNeededEvent,
+    ErrorEvent,
+    FinalEvent,
+    FollowupQuestionsEvent,
+    IntentDetectedEvent,
+    MemoryRecalledEvent,
+    MemoryStoredEvent,
+    PhaseEvent,
+    PlanEvent,
+    PlanStepEvent,
+    PolicyCheckedEvent,
+    ReasoningEvent,
+    ReflectionEvent,
+    SchemaEnrichedEvent,
+    StatusEvent,
+    SubagentEvent,
+    TextPartEvent,
+    ThinkingDeltaEvent,
+    ThinkPartEvent,
+    ToolCallEvent,
+    ToolResultEvent,
+    TurnEndEvent,
+)
+from dbgpt_analyst.events.task_events import TaskCallEvent
+
+# Legacy block event aliases
+DocumentBlockEvent = PlanStepEvent
+SpreadsheetBlockEvent = PlanStepEvent
+
+__all__ = [
+    "AnswerDeltaEvent",
+    "ApprovalRequestEvent",
+    "ClarificationNeededEvent",
+    "DocumentBlockEvent",
+    "ErrorEvent",
+    "FinalEvent",
+    "FollowupQuestionsEvent",
+    "IntentDetectedEvent",
+    "MemoryRecalledEvent",
+    "MemoryStoredEvent",
+    "PhaseEvent",
+    "PlanEvent",
+    "PlanStepEvent",
+    "PolicyCheckedEvent",
+    "ReasoningEvent",
+    "ReflectionEvent",
+    "SchemaEnrichedEvent",
+    "SpreadsheetBlockEvent",
+    "StatusEvent",
+    "SubagentEvent",
+    "TaskCallEvent",
+    "TextPartEvent",
+    "ThinkingDeltaEvent",
+    "ThinkPartEvent",
+    "ToolCallEvent",
+    "ToolResultEvent",
+    "TurnEndEvent",
+]

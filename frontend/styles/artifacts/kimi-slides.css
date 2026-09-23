@@ -1,0 +1,183 @@
+/* ==========================================================================
+   KIMI SLIDES ARTIFACT SYSTEM (PowerPoint / Presentation Viewport)
+   ========================================================================== */
+
+/* 16:9 Slides Container */
+.kimi-slides-container {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 1rem;
+  background-color: var(--kimi-bg-canvas);
+  user-select: none;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .kimi-slides-container {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .kimi-slides-container {
+    padding: 2rem;
+  }
+}
+
+.kimi-slides-container--fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  border-radius: 0;
+  border: none;
+}
+
+/* Presentation Stage */
+.kimi-slides-stage {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  background-color: transparent;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* 16:9 Slide Frame */
+.kimi-slides-deck-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+/* Floating Control Bar Overlay */
+.kimi-slides-control-bar {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--kimi-border);
+  border-radius: 9999px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  z-index: 20;
+}
+
+.kimi-slides-nav-btn {
+  width: 1.75rem;
+  height: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  color: var(--kimi-text-main);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.kimi-slides-nav-btn:hover:not(:disabled) {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.kimi-slides-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.kimi-slides-counter {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--kimi-text-main);
+  letter-spacing: 0.1em;
+  font-variant-numeric: tabular-nums;
+  font-family: var(--kimi-font-mono);
+}
+
+.kimi-slides-key-hint {
+  font-size: 0.75rem;
+  font-family: var(--kimi-font-mono);
+  color: var(--kimi-text-muted);
+  padding: 0 0.25rem;
+}
+
+/* Loading & Empty States */
+.kimi-slides-loading {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  text-align: center;
+  background-color: var(--kimi-bg-app);
+  color: var(--kimi-text-main);
+  min-height: 21.875rem;
+  border-radius: 1.5rem;
+}
+
+.kimi-slides-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--kimi-text-muted);
+  padding: 2rem;
+  text-align: center;
+  gap: 1rem;
+}
+
+/* Gallery Grid & Template Cards */
+.kimi-slides-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+@media (min-width: 640px) {
+  .kimi-slides-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .kimi-slides-gallery-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.kimi-slides-template-card {
+  aspect-ratio: 16 / 9;
+  border-radius: 0.5rem;
+  border: 1px solid var(--kimi-border);
+  background-color: var(--kimi-bg-canvas);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.kimi-slides-template-card:hover {
+  border-color: var(--kimi-accent-green);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+}

@@ -1,0 +1,1175 @@
+/* OpenWork Style DNA & Design Tokens (MIT) - 1:1 Parity with OpenWork Reference */
+@import "./openwork-colors.css";
+@import "./openwork-tailwind-theme.css";
+
+:root {
+  color-scheme: light;
+
+  /* =========================================================================
+     Claude.ai Design Tokens & Fluid Typography (Anthropic Design DNA)
+     ========================================================================= */
+  --claude-font-family: "Plus Jakarta Sans", "Be Vietnam Pro", "Instrument Sans", "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --claude-font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --claude-font-serif: "Lora", Georgia, serif;
+  
+  /* Fluid Typography Scale */
+  --claude-font-size-xs: 0.75rem;    /* 12px fluid equivalent */
+  --claude-font-size-sm: 0.875rem;   /* 14px */
+  --claude-font-size-base: 0.9375rem; /* 15px - fluid base */
+  --claude-font-size-md: 1rem;       /* 16px */
+  --claude-font-size-lg: 1.125rem;   /* 18px */
+  --claude-font-size-xl: 1.25rem;    /* 20px */
+  --claude-font-size-2xl: 1.5rem;    /* 24px */
+  
+  --claude-font-weight-normal: 400;
+  --claude-font-weight-medium: 500;
+  --claude-font-weight-semibold: 600;
+  
+  --claude-line-height-tight: 1.25;
+  --claude-line-height-base: 1.5;
+  --claude-line-height-relaxed: 1.625;
+  
+  /* 8 Canonical Anthropic Warm Neutral Tokens (Light Mode) */
+  --bg-base: #FAF9F5;
+  --bg-surface: #FFFFFF;
+  --bg-muted: #F3F2EC;
+  --fg-primary: #1E1E1C;
+  --fg-secondary: #63625D;
+  --border-subtle: #E6E4DD;
+  --accent: #CC785C;
+  --accent-soft: rgba(204, 120, 92, 0.08);
+
+  /* Color Tokens (Claude Light Warm Parchment Canvas) */
+  --claude-text-primary: var(--fg-primary);     /* Warm Charcoal strong */
+  --claude-text-secondary: var(--fg-secondary); /* Warm Gray body */
+  --claude-text-tertiary: #9c978f;    /* Warm Muted text */
+  
+  --claude-surface-base: var(--bg-base);     /* Claude Warm Parchment Linen */
+  --claude-surface-card: var(--bg-surface);  /* Surface 1 */
+  --claude-surface-muted: var(--bg-muted);   /* Surface 2 */
+  --claude-surface-accent: #eeeae3;   /* Surface 3 */
+  
+  --claude-border: var(--border-subtle);
+  --claude-border-default: var(--border-subtle);
+  --claude-border-subtle: #eeeae3;
+  --claude-focus-ring: var(--accent);
+
+  /* Charcoal Dark Code Block Background */
+  --claude-code-bg: #18181b;
+
+  /* Signature Anthropic Claude Terracotta Coral Accent */
+  --claude-accent: var(--accent);
+  --claude-accent-terracotta: var(--accent);
+  --claude-accent-coral: var(--accent);
+  --claude-accent-hover: #b8654b;
+  --claude-accent-active: #ad4f30;
+  --claude-accent-muted: var(--accent-soft);
+  --claude-accent-fg: #ffffff;
+  
+  /* Radius Tokens */
+  --claude-radius-xs: 0.3125rem;      /* 5px */
+  --claude-radius-sm: 0.375rem;       /* 6px */
+  --claude-radius-md: 0.5rem;         /* 8px */
+  --claude-radius-lg: 0.75rem;        /* 12px */
+  --claude-radius-xl: 1rem;           /* 16px */
+  --claude-radius-2xl: 1.5rem;        /* 24px */
+  --claude-radius-pill: 9999px;
+  
+  /* Spacing Tokens */
+  --claude-space-1: 0.125rem;         /* 2px */
+  --claude-space-2: 0.25rem;          /* 4px */
+  --claude-space-3: 0.375rem;         /* 6px */
+  --claude-space-4: 0.5rem;           /* 8px */
+  --claude-space-5: 0.625rem;         /* 10px */
+  --claude-space-6: 0.75rem;          /* 12px */
+  --claude-space-7: 1rem;             /* 16px */
+  --claude-space-8: 1.5rem;           /* 24px */
+  --claude-space-9: 2rem;             /* 32px */
+  
+  /* Motion Tokens */
+  --claude-motion-instant: 60ms;
+  --claude-motion-fast: 200ms;
+  --claude-motion-spring: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* OpenWork Core DLS Design Language Tokens (Claude Canvas Editorial) */
+  --dls-surface: var(--color-paper, #ffffff);
+  --dls-sidebar: var(--color-sidebar, #f5f3ee);
+  --dls-app-bg: var(--color-bg, #faf8f5);
+  --dls-background: var(--color-bg, #faf8f5);
+  --dls-canvas: var(--color-bg, #faf8f5);
+  --dls-surface-muted: var(--color-sidebar, #f5f3ee);
+  --dls-border: var(--color-divider, #e5e3dc);
+  --dls-accent: var(--color-accent, #da7756);
+  --dls-accent-hover: var(--color-accent-600, #c15f3c);
+  --dls-accent-fg: #ffffff;
+  --dls-accent-rgb: 218 119 86;
+  --dls-secondary-rgb: 110 109 107;
+  --dls-text-primary: var(--color-text, #1f1e1d);
+  --dls-text-secondary: var(--color-text-muted, #6e6d6b);
+  --dls-hover: var(--color-neutral-200, #eeeae3);
+  --dls-active: rgba(31, 30, 29, 0.08);
+  --dls-radius: 0.5rem;
+  --dls-radius-lg: 0.75rem;
+  --dls-shell-shadow: 0 1px 3px rgba(31, 30, 29, 0.04), 0 12px 32px rgba(31, 30, 29, 0.03);
+  --dls-card-shadow: 0 1px 2px rgba(31, 30, 29, 0.04);
+
+  /* OpenWork Shadcn Semantic Mappings (Claude Canvas Editorial) */
+  --background: var(--color-bg, #faf8f5);
+  --foreground: var(--color-text, #1f1e1d);
+  --card: var(--color-paper, #ffffff);
+  --card-foreground: var(--color-text, #1f1e1d);
+  --popover: var(--color-paper, #ffffff);
+  --popover-foreground: var(--color-text, #1f1e1d);
+  --popover-border: var(--color-divider, #e5e3dc);
+  --primary: var(--color-accent, #da7756);
+  --primary-foreground: #ffffff;
+  --secondary: var(--color-neutral-200, #eeeae3);
+  --secondary-foreground: var(--color-text, #1f1e1d);
+  --muted: var(--color-sidebar, #f5f3ee);
+  --muted-foreground: var(--color-text-muted, #6e6d6b);
+  --accent: var(--color-accent, #da7756);
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --warning: #d97706;
+  --border: var(--color-divider, #e5e3dc);
+  --input: var(--color-divider, #e5e3dc);
+  --ring: var(--color-accent, #da7756);
+  --chart-1: #da7756;
+  --chart-2: #059669;
+  --chart-3: #d97706;
+  --chart-4: #7c3aed;
+  --chart-5: #db2777;
+  --sidebar: var(--color-sidebar, #f5f3ee);
+  --sidebar-foreground: var(--color-text, #1f1e1d);
+  --sidebar-primary: var(--color-accent, #da7756);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--color-neutral-200, #eeeae3);
+  --sidebar-accent-foreground: var(--color-text, #1f1e1d);
+  --sidebar-border: var(--color-divider, #e5e3dc);
+  --sidebar-ring: var(--color-accent, #da7756);
+
+  /* OpenWork Spotlights & Action Badges */
+  --openwork-spotlight-border: rgba(218, 119, 86, 0.85);
+  --openwork-spotlight-glow: 0 0 15px rgba(218, 119, 86, 0.2);
+  --openwork-amber-glow: 0 0 12px rgba(218, 119, 86, 0.15);
+}
+
+[data-theme="dark"],
+.dark {
+  color-scheme: dark;
+
+  /* 8 Canonical Anthropic Warm Neutral Tokens (Dark Mode) */
+  --bg-base: #181816;
+  --bg-surface: #21201D;
+  --bg-muted: #2A2926;
+  --fg-primary: #F4F3ED;
+  --fg-secondary: #A3A29B;
+  --border-subtle: #33322E;
+  --accent: #D97757;
+  --accent-soft: rgba(217, 119, 87, 0.12);
+
+  /* Color Tokens (Warm Dark Mode) */
+  --claude-text-primary: var(--fg-primary);     /* Primary text warm stone */
+  --claude-text-secondary: var(--fg-secondary); /* Secondary text warm gray */
+  --claude-text-tertiary: #71706c;    /* Tertiary text */
+  
+  --claude-surface-base: var(--bg-base);     /* Warm Dark Stone Canvas */
+  --claude-surface-card: var(--bg-surface);  /* Elevated Card (Charcoal) */
+  --claude-surface-muted: var(--bg-muted);   /* Muted container / sidebar */
+  --claude-surface-accent: #2d2926;   /* Subtle interactive hover */
+  
+  --claude-border: var(--border-subtle);          /* Warm border */
+  --claude-border-default: var(--border-subtle);  /* Warm border */
+  --claude-border-subtle: rgba(255, 255, 255, 0.04);
+  --claude-focus-ring: var(--accent);                        /* Terracotta focus ring */
+
+  /* Charcoal Dark Code Block Background */
+  --claude-code-bg: #121110;
+
+  /* Anthropic Accent / Terracotta Tokens (Dark) */
+  --claude-accent: var(--accent);
+  --claude-accent-terracotta: var(--accent);
+  --claude-accent-coral: #e07a5f;
+  --claude-accent-hover: #e5856b;
+  --claude-accent-active: #cc6342;
+  --claude-accent-muted: var(--accent-soft);
+  --claude-accent-fg: #ffffff;
+
+  /* OpenWork Core DLS Design Language Tokens (Warm Dark) */
+  --dls-surface: var(--claude-surface-card);
+  --dls-sidebar: var(--claude-surface-muted);
+  --dls-app-bg: var(--claude-surface-base);
+  --dls-background: var(--claude-surface-base);
+  --dls-canvas: var(--claude-surface-base);
+  --dls-surface-muted: var(--claude-surface-muted);
+  --dls-border: var(--claude-border-default);
+  --dls-accent: #f4f4f5;
+  --dls-accent-hover: #ffffff;
+  --dls-accent-fg: #09090b;
+  --dls-accent-rgb: 244 244 245;
+  --dls-secondary-rgb: 161 161 160;
+  --dls-text-primary: var(--claude-text-primary);
+  --dls-text-secondary: var(--claude-text-secondary);
+  --dls-hover: var(--claude-surface-accent);
+  --dls-active: rgba(255, 255, 255, 0.08);
+  --dls-radius: 1rem;
+  --dls-radius-lg: 1.5rem;
+  --dls-shell-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+  --dls-card-shadow: 0 14px 36px rgba(0, 0, 0, 0.24);
+
+  /* OpenWork Shadcn Semantic Mappings (Warm Dark) */
+  --background: var(--claude-surface-base);
+  --foreground: var(--claude-text-primary);
+  --card: var(--claude-surface-card);
+  --card-foreground: var(--claude-text-primary);
+  --popover: var(--claude-surface-card);
+  --popover-foreground: var(--claude-text-primary);
+  --popover-border: var(--claude-border-default);
+  --primary: #f4f4f5;
+  --primary-foreground: #09090b;
+  --secondary: var(--claude-surface-accent);
+  --secondary-foreground: var(--claude-text-secondary);
+  --muted: var(--claude-surface-muted);
+  --muted-foreground: var(--claude-text-secondary);
+  --accent: var(--claude-surface-accent);
+  --accent-foreground: var(--claude-text-secondary);
+  --destructive: #ef4444;
+  --warning: #f59e0b;
+  --border: var(--claude-border-default);
+  --input: var(--claude-border-default);
+  --ring: var(--claude-focus-ring);
+  --chart-1: #da7756;
+  --chart-2: #34d399;
+  --chart-3: #fbbf24;
+  --chart-4: #a78bfa;
+  --chart-5: #f472b6;
+  --sidebar: var(--claude-surface-muted);
+  --sidebar-foreground: var(--claude-text-primary);
+  --sidebar-primary: #f4f4f5;
+  --sidebar-primary-foreground: #09090b;
+  --sidebar-accent: var(--claude-surface-accent);
+  --sidebar-accent-foreground: var(--claude-text-secondary);
+  --sidebar-border: var(--claude-border-default);
+  --sidebar-ring: var(--claude-focus-ring);
+
+  --openwork-spotlight-border: rgba(218, 119, 86, 0.85);
+  --openwork-spotlight-glow: 0 0 20px rgba(218, 119, 86, 0.25);
+}
+
+/* =========================================================================
+   OpenWork Custom Utility Classes & Surfaces
+   ========================================================================= */
+
+.ow-soft-shell {
+  border: 1px solid var(--dls-border);
+  background: var(--dls-surface);
+  border-radius: 2rem;
+  box-shadow: var(--dls-shell-shadow);
+}
+
+.ow-soft-card {
+  border: 1px solid var(--dls-border);
+  background: var(--dls-surface);
+  border-radius: 1.5rem;
+  box-shadow: var(--dls-card-shadow);
+}
+
+.ow-soft-card-quiet {
+  border: 1px solid var(--dls-border);
+  background: var(--dls-sidebar);
+  border-radius: 1.5rem;
+}
+
+/* Arc-style overflow: long labels fade out instead of showing an ellipsis. */
+.ow-fade-truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip;
+  mask-image: linear-gradient(to right, black calc(100% - 18px), transparent);
+}
+
+/* Session titles move once from their resting edge; the row and controls stay fixed. */
+.ow-session-title-moving {
+  mask-image: linear-gradient(to right, transparent, black 10px, black calc(100% - 10px), transparent);
+}
+
+.ow-session-title-moving > span {
+  will-change: transform;
+}
+
+/* Pill Buttons */
+.ow-button-primary {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: var(--dls-accent);
+  color: white;
+  box-shadow: 0 8px 20px -16px rgba(var(--dls-accent-rgb), 0.45);
+}
+
+.ow-button-primary:hover:not(:disabled) {
+  background: var(--dls-accent-hover);
+}
+
+.ow-button-secondary {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid var(--dls-border);
+  background: var(--dls-surface);
+  color: var(--dls-text-primary);
+  box-shadow: var(--dls-card-shadow);
+}
+
+.ow-button-secondary:hover:not(:disabled) {
+  background: var(--dls-hover);
+}
+
+.ow-button-primary,
+.ow-button-secondary {
+  padding: 0.75rem 1.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.4615;
+  font-weight: 500;
+  transition: background-color 150ms ease, color 150ms ease, transform 150ms ease, opacity 150ms ease;
+}
+
+.ow-button-primary:active:not(:disabled),
+.ow-button-secondary:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.ow-button-primary:disabled,
+.ow-button-secondary:disabled {
+  opacity: 0.5;
+}
+
+/* Status Pills */
+.ow-status-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.6875rem;
+  line-height: 1.4615;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.ow-status-pill-positive {
+  border: 1px solid var(--green-a6);
+  background: var(--green-3);
+  color: var(--green-11);
+}
+
+.ow-status-pill-warning {
+  border: 1px solid var(--amber-a6);
+  background: var(--amber-3);
+  color: var(--amber-11);
+}
+
+.ow-status-pill-neutral {
+  border: 1px solid var(--slate-6);
+  background: var(--slate-2);
+  color: var(--slate-11);
+}
+
+/* Icon Tiles */
+.ow-icon-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.85rem;
+  background: var(--slate-3);
+  color: var(--slate-12);
+}
+
+.ow-icon-tile-muted {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.85rem;
+  background: var(--slate-3);
+  color: var(--slate-11);
+}
+
+/* Form Inputs */
+.ow-input {
+  appearance: none;
+  width: 100%;
+  border: 0;
+  border-radius: 0.9rem;
+  background: var(--slate-1);
+  box-shadow: inset 0 0 0 1px var(--slate-6);
+  color: var(--dls-text-primary);
+}
+
+.ow-input::placeholder {
+  color: var(--slate-11);
+}
+
+.ow-input:focus {
+  outline: none;
+  box-shadow: inset 0 0 0 1px rgba(var(--dls-accent-rgb), 0.28), 0 0 0 3px rgba(var(--dls-accent-rgb), 0.08);
+}
+
+/* =========================================================================
+   Keyframe Animations
+   ========================================================================= */
+
+/* OpenWork Reference Core Keyframes */
+@keyframes ow-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@keyframes ow-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ow-dash {
+  to { stroke-dashoffset: -14; }
+}
+
+@keyframes ow-ping {
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes ow-blip {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.animate-ow-pulse {
+  animation: ow-pulse 1.2s ease-in-out infinite;
+}
+
+.animate-ow-spin {
+  animation: ow-spin 0.7s linear infinite;
+}
+
+.animate-ow-ping {
+  animation: ow-ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animate-ow-blip {
+  animation: ow-blip 1s ease-in-out infinite;
+}
+
+/* Classical Editorial Keyframe Animations */
+@keyframes cuccuPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(182, 130, 53, 0.4);
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.8;
+    box-shadow: 0 0 0 4px rgba(182, 130, 53, 0);
+  }
+}
+
+@keyframes cuccuUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cuccuCaret {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes cuccuSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cuccuShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Classical Animation Utilities */
+.animate-cuccu-pulse {
+  animation: cuccuPulse 1.4s ease-in-out infinite;
+}
+
+.animate-cuccu-up {
+  animation: cuccuUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-cuccu-caret {
+  animation: cuccuCaret 0.9s steps(1) infinite;
+}
+
+.animate-cuccu-spin {
+  animation: cuccuSpin 0.7s linear infinite;
+}
+
+.animate-cuccu-shimmer {
+  background: linear-gradient(90deg, #f1f0ee 25%, #e7e6e4 37%, #f1f0ee 63%);
+  background-size: 200% 100%;
+  animation: cuccuShimmer 1.4s linear infinite;
+}
+
+@keyframes soft-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+.animate-soft-pulse {
+  animation: soft-pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes command-highlight {
+  0% {
+    box-shadow: 0 0 0 0 var(--indigo-a9);
+    border-color: var(--indigo-a9);
+  }
+  50% {
+    box-shadow: 0 0 0 8px var(--indigo-a1);
+    border-color: var(--indigo-a7);
+  }
+  100% {
+    box-shadow: 0 0 0 0 var(--indigo-a1);
+    border-color: var(--slate-a3);
+  }
+}
+
+.command-just-saved {
+  animation: command-highlight 2s ease-out;
+  border-color: var(--indigo-a9);
+}
+
+@keyframes progress-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+.animate-progress-shimmer {
+  animation: progress-shimmer 2s infinite linear;
+}
+
+/* Quiet text shimmer for lightweight loading hints (e.g. streaming thoughts):
+   a soft highlight sweeps across muted text. */
+@keyframes ow-text-shimmer {
+  0% {
+    background-position: 150% 0;
+  }
+  100% {
+    background-position: -50% 0;
+  }
+}
+
+.ow-text-shimmer {
+  background-image: linear-gradient(
+    90deg,
+    rgb(var(--dls-secondary-rgb) / 0.7) 0%,
+    rgb(var(--dls-secondary-rgb) / 0.7) 42%,
+    var(--dls-text-primary) 50%,
+    rgb(var(--dls-secondary-rgb) / 0.7) 58%,
+    rgb(var(--dls-secondary-rgb) / 0.7) 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: ow-text-shimmer 2.4s linear infinite;
+}
+
+/* Quiet, small dot ticker. Running light indicator. */
+@keyframes ow-dot-ticker {
+  0% {
+    background-color: rgb(var(--dls-secondary-rgb) / 0.22);
+    box-shadow: 0 0 0 rgb(var(--dls-accent-rgb) / 0);
+  }
+  20% {
+    background-color: rgb(var(--dls-accent-rgb) / 0.95);
+    box-shadow: 0 0 8px rgb(var(--dls-accent-rgb) / 0.45);
+  }
+  55%,
+  100% {
+    background-color: rgb(var(--dls-secondary-rgb) / 0.22);
+    box-shadow: 0 0 0 rgb(var(--dls-accent-rgb) / 0);
+  }
+}
+
+.ow-dot-ticker {
+  animation: ow-dot-ticker 1.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  background-color: rgb(var(--dls-secondary-rgb) / 0.22);
+}
+
+/* Compositor-driven 3x3 dot matrix animation */
+.ow-dot-matrix-dot {
+  animation-duration: 720ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: step-end;
+}
+
+.ow-dot-matrix-on {
+  opacity: 0.9;
+}
+
+.ow-dot-matrix-off {
+  opacity: 0.25;
+}
+
+@keyframes ow-dot-matrix-a {
+  0%,
+  75%,
+  100% {
+    opacity: 0.9;
+  }
+  25%,
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@keyframes ow-dot-matrix-b {
+  0%,
+  50% {
+    opacity: 0.25;
+  }
+  25%,
+  75%,
+  100% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes ow-dot-matrix-c {
+  0%,
+  25%,
+  75%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes ow-dot-matrix-d {
+  0%,
+  25%,
+  100% {
+    opacity: 0.9;
+  }
+  50%,
+  75% {
+    opacity: 0.25;
+  }
+}
+
+@keyframes ow-dot-matrix-e {
+  0%,
+  50%,
+  75%,
+  100% {
+    opacity: 0.9;
+  }
+  25% {
+    opacity: 0.25;
+  }
+}
+
+@keyframes ow-dot-matrix-f {
+  0%,
+  75%,
+  100% {
+    opacity: 0.25;
+  }
+  25%,
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes ow-dot-matrix-g {
+  0%,
+  25%,
+  75%,
+  100% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.ow-dot-matrix-frame-a {
+  animation-name: ow-dot-matrix-a;
+}
+.ow-dot-matrix-frame-b {
+  animation-name: ow-dot-matrix-b;
+}
+.ow-dot-matrix-frame-c {
+  animation-name: ow-dot-matrix-c;
+}
+.ow-dot-matrix-frame-d {
+  animation-name: ow-dot-matrix-d;
+}
+.ow-dot-matrix-frame-e {
+  animation-name: ow-dot-matrix-e;
+}
+.ow-dot-matrix-frame-f {
+  animation-name: ow-dot-matrix-f;
+}
+.ow-dot-matrix-frame-g {
+  animation-name: ow-dot-matrix-g;
+}
+
+@keyframes ow-stage-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(400%);
+  }
+}
+
+.ow-stage-shimmer {
+  animation: ow-stage-shimmer 1.6s linear infinite;
+}
+
+/* Reduced Motion Overrides */
+@media (prefers-reduced-motion: reduce) {
+  .ow-text-shimmer {
+    background-image: none;
+    color: rgb(var(--dls-secondary-rgb) / 0.7);
+    animation: none;
+  }
+
+  .ow-dot-ticker {
+    animation: none;
+    background-color: rgb(var(--dls-accent-rgb) / 0.6);
+  }
+
+  .ow-dot-matrix-dot {
+    animation: none;
+  }
+
+  .ow-stage-shimmer {
+    animation: none;
+    transform: translateX(0);
+  }
+}
+
+/* Coworker Spotlight & Claude-style Card Containers */
+@keyframes openwork-spotlight-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(113, 113, 122, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(113, 113, 122, 0);
+  }
+}
+
+.openwork-spotlight-active {
+  position: relative;
+  outline: 2px solid var(--openwork-spotlight-border) !important;
+  outline-offset: 2px;
+  animation: openwork-spotlight-pulse 2s infinite ease-in-out;
+}
+
+.openwork-card {
+  background: var(--dls-surface);
+  border: 1px solid var(--dls-border);
+  border-radius: var(--dls-radius);
+  box-shadow: var(--dls-card-shadow);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.openwork-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--dls-shell-shadow);
+}
+
+/* =========================================================================
+   Retractable Panel Transitions & Splitter Mechanics
+   ========================================================================= */
+
+.panel-transition,
+.transition-panel {
+  transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.retractable-panel-transition {
+  transition: width 300ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms ease, transform 300ms ease;
+}
+
+.retractable-panel-open {
+  width: 24.5rem; /* 392px fluid equivalent */
+  opacity: 1;
+  transition: all 300ms ease-in-out;
+}
+
+.retractable-panel-collapsed {
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  border-right-width: 0;
+  transition: all 300ms ease-in-out;
+}
+
+.main-canvas-expand {
+  flex: 1 1 0%;
+  min-width: 0;
+  width: 100%;
+  transition: all 300ms ease-in-out;
+}
+
+/* =========================================================================
+   Classical Editorial Component Classes & Utilities
+   ========================================================================= */
+
+/* Outlined Buttons */
+.btn-classical,
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.2;
+  color: var(--color-text, #201f1d);
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 0.5rem 0.875rem;
+  border-radius: 0.25rem;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.btn-classical svg,
+.btn svg {
+  display: block;
+}
+
+.btn-classical:disabled,
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-classical-primary,
+.btn-primary {
+  color: var(--color-accent, #b68235);
+  border-color: var(--color-accent, #b68235);
+  background: transparent;
+}
+
+.btn-classical-primary:hover:not(:disabled),
+.btn-primary:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--color-accent, #b68235) 12%, transparent);
+}
+
+.btn-classical-primary:active:not(:disabled),
+.btn-primary:active:not(:disabled) {
+  background: color-mix(in srgb, var(--color-accent, #b68235) 22%, transparent);
+}
+
+.btn-classical-secondary,
+.btn-secondary {
+  border-color: var(--color-divider, #edecea);
+  color: var(--color-text, #201f1d);
+  background: transparent;
+}
+
+.btn-classical-secondary:hover:not(:disabled),
+.btn-secondary:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--color-text, #201f1d) 7%, transparent);
+}
+
+.btn-classical-secondary:active:not(:disabled),
+.btn-secondary:active:not(:disabled) {
+  background: color-mix(in srgb, var(--color-text, #201f1d) 14%, transparent);
+}
+
+.btn-classical-ghost,
+.btn-ghost {
+  color: var(--color-accent, #b68235);
+  background: transparent;
+  padding-inline: 0.25rem;
+}
+
+.btn-classical-ghost:hover:not(:disabled),
+.btn-ghost:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--color-accent, #b68235) 10%, transparent);
+}
+
+.btn-classical-ghost:active:not(:disabled),
+.btn-ghost:active:not(:disabled) {
+  background: color-mix(in srgb, var(--color-accent, #b68235) 18%, transparent);
+}
+
+.btn-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+}
+
+.btn-block {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* Classical Cards */
+.card-classical,
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.875rem;
+  border-radius: 0.25rem;
+  background: var(--color-paper, #ffffff);
+  border: 1px solid var(--color-divider, #edecea);
+  box-shadow: 0 1px 2px color-mix(in srgb, #2d2b2b 14%, transparent);
+}
+
+.card-classical-warm {
+  background: var(--color-paper-warm, #fafaf9);
+  border: 1px solid var(--color-divider-subtle, #e7e6e4);
+}
+
+.card-classical-dark {
+  background: var(--color-deck-dark, #011627);
+  color: var(--color-text-inverse, #ffffff);
+  border: 1px solid var(--color-divider-dark, #272a2d);
+}
+
+.card-kicker {
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent, #b68235);
+  font-feature-settings: 'tnum';
+}
+
+.card-title {
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-weight: 600;
+  font-size: 1.0625rem;
+  line-height: 1.2;
+}
+
+.card-body {
+  margin: 0;
+  font-size: 0.8125rem;
+  opacity: 0.8;
+  flex: 1;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.6875rem;
+  color: color-mix(in srgb, var(--color-text, #201f1d) 50%, transparent);
+}
+
+/* Classical Tags and Status Pills */
+.tag-classical,
+.tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 0.1875rem 0.5rem;
+  border-radius: 0.25rem;
+  font-feature-settings: 'tnum';
+}
+
+.tag-classical-accent,
+.tag-accent {
+  background: var(--color-accent-100, #fff3e4);
+  color: var(--color-accent-700, #da7756);
+  border: 1px solid var(--color-accent-200, #ffe3bf);
+}
+
+.tag-classical-neutral,
+.tag-neutral {
+  background: var(--color-neutral-100, #f8f4f4);
+  color: var(--color-neutral-800, #444141);
+  border: 1px solid var(--color-divider, #edecea);
+}
+
+.tag-classical-outline,
+.tag-outline {
+  border: 1px solid var(--color-accent, #b68235);
+  color: var(--color-accent, #b68235);
+  background: transparent;
+}
+
+/* Classical Plate Imagery */
+.plate-classical,
+.plate {
+  filter: sepia(0.22) saturate(0.82) contrast(1.05);
+  box-sizing: border-box;
+  border: 0.375rem solid var(--color-surface, #eae9e9);
+  outline: 1px solid var(--color-divider, #edecea);
+}
+
+/* Classical Tables */
+.table-classical,
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 0.875rem;
+}
+
+.table-classical th,
+.table th {
+  text-align: left;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted, #605d5d);
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--color-divider, #edecea);
+  background: var(--color-sidebar, #fafaf9);
+}
+
+.table-classical td,
+.table td {
+  padding: 0.625rem 0.75rem;
+  border-bottom: 1px solid var(--color-divider-subtle, #e7e6e4);
+  color: var(--color-text, #201f1d);
+  line-height: 1.5;
+}
+
+.table-classical td.num,
+.table-classical th.num,
+.table td.num,
+.table th.num {
+  text-align: right;
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
+}
+
+.table-classical tbody tr:hover,
+.table tbody tr:hover {
+  background: color-mix(in srgb, var(--color-text, #201f1d) 4%, transparent);
+}
+
+/* Hairline Rules */
+.hr {
+  height: 1px;
+  border: 0;
+  margin: 1rem 0;
+  background: var(--color-divider, #edecea);
+}
+
+/* Segmented Options */
+.seg {
+  display: inline-flex;
+  overflow: hidden;
+  border: 1px solid var(--color-divider, #edecea);
+  border-radius: 0.25rem;
+}
+
+.seg-opt {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.4375rem 0.75rem;
+  font-size: 0.8125rem;
+  cursor: pointer;
+}
+
+.seg-opt + .seg-opt {
+  border-left: 1px solid var(--color-divider, #edecea);
+}
+
+.seg-opt:has(input:checked) {
+  color: var(--color-accent, #b68235);
+  box-shadow: inset 0 0 0 1px var(--color-accent, #b68235);
+}
+
+.seg-opt:not(:has(input:checked)):hover {
+  background: color-mix(in srgb, var(--color-text, #201f1d) 7%, transparent);
+}
+
+/* =========================================================================
+   OpenWork Custom Scrollbar (6px width, auto-adapting)
+   ========================================================================= */
+.custom-scrollbar {
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border, #e4e4e7) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--border, #e4e4e7);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground, #a1a1aa);
+}
+
+[data-theme="dark"] .custom-scrollbar,
+.dark .custom-scrollbar {
+  scrollbar-color: var(--border, #27272a) transparent;
+}
+
+[data-theme="dark"] .custom-scrollbar::-webkit-scrollbar-thumb,
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--border, #27272a);
+}
+
+[data-theme="dark"] .custom-scrollbar::-webkit-scrollbar-thumb:hover,
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground, #71717a);
+}
+
+

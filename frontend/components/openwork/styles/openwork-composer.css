@@ -1,0 +1,454 @@
+/* ==========================================================================
+   OpenWork Input Composer — Claude Canvas Floating Capsule
+   ========================================================================== */
+
+/* 1. Outer Floating Command Capsule Container — Claude Canvas Aesthetic */
+.ow-composer-capsule {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 18px;
+  background-color: var(--card, #ffffff);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 10px 14px 8px;
+  min-height: 76px;
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.04),
+    0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: border-color 160ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 160ms cubic-bezier(0.16, 1, 0.3, 1), background-color 160ms ease, border-radius 160ms ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Subtle Claude glow on capsule wrapper */
+.chat-input-wrapper .ow-composer-capsule {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.04),
+    0 1px 3px rgba(0, 0, 0, 0.02) !important;
+}
+
+:root[data-theme="dark"] .ow-composer-capsule,
+.dark .ow-composer-capsule {
+  background-color: var(--bg-surface, #21201D);
+  border-color: var(--border-subtle, rgba(255, 255, 255, 0.08));
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.2),
+    0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="dark"] .chat-input-wrapper .ow-composer-capsule,
+.dark .chat-input-wrapper .ow-composer-capsule {
+  border-color: var(--border-subtle, rgba(255, 255, 255, 0.08)) !important;
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.2),
+    0 1px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.ow-composer-capsule:focus-within {
+  border-color: var(--accent-bd, rgba(204, 120, 92, 0.35));
+  box-shadow:
+    0 0 0 1px var(--accent-soft, rgba(204, 120, 92, 0.15)),
+    0 4px 20px -2px var(--accent-soft, rgba(204, 120, 92, 0.15)),
+    0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.chat-input-wrapper .ow-composer-capsule:focus-within {
+  border-color: var(--accent-bd, rgba(204, 120, 92, 0.35)) !important;
+  box-shadow:
+    0 0 0 1px var(--accent-soft, rgba(204, 120, 92, 0.15)),
+    0 4px 20px -2px var(--accent-soft, rgba(204, 120, 92, 0.15)),
+    0 1px 3px rgba(0, 0, 0, 0.03) !important;
+}
+
+:root[data-theme="dark"] .ow-composer-capsule:focus-within,
+.dark .ow-composer-capsule:focus-within {
+  border-color: var(--accent);
+  box-shadow:
+    0 0 0 1px var(--accent-bd, rgba(217, 119, 87, 0.35)),
+    0 6px 24px -2px var(--accent-soft, rgba(217, 119, 87, 0.2)),
+    0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+:root[data-theme="dark"] .chat-input-wrapper .ow-composer-capsule:focus-within,
+.dark .chat-input-wrapper .ow-composer-capsule:focus-within {
+  border-color: var(--accent) !important;
+  box-shadow:
+    0 0 0 1px var(--accent-bd, rgba(217, 119, 87, 0.35)),
+    0 6px 24px -2px var(--accent-soft, rgba(217, 119, 87, 0.2)),
+    0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 2. Textarea Auto-Expand & Editorial Terracotta Caret */
+.ow-composer-textarea {
+  width: 100%;
+  padding: 2px 4px;
+  background: transparent;
+  font-family: var(--font-sans, "Instrument Sans", "Geist", system-ui, sans-serif);
+  font-size: 0.9375rem; /* 15px fluid */
+  line-height: 1.6;
+  color: var(--fg, #1f1e1d);
+  border: none;
+  outline: none;
+  resize: none;
+  min-height: 44px;
+  max-height: 180px;
+  caret-color: var(--accent);
+  transition: color 150ms ease;
+}
+
+:root[data-theme="dark"] .ow-composer-textarea,
+.dark .ow-composer-textarea {
+  color: var(--text-primary-dark, #f5f4f0);
+  caret-color: var(--accent);
+}
+
+.ow-composer-textarea::placeholder {
+  color: var(--muted-fg, #6e6d6b);
+  opacity: 0.65;
+}
+
+/* 3. Horizontal Single-Line Row Container & Actions */
+.ow-composer-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  min-width: 0;
+}
+
+.ow-composer-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.ow-composer-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding-top: 6px;
+  width: 100%;
+}
+
+.ow-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+  flex: 1;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.ow-toolbar-left::-webkit-scrollbar {
+  display: none;
+}
+
+.ow-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* 4. Soft Pill Action Buttons (Attach, Model, Datasource) */
+.ow-pill-btn {
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 8px;
+  border-radius: 7px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.02);
+  color: var(--fg2, #2c2a27);
+  font-family: var(--font-sans, "Instrument Sans", sans-serif);
+  font-size: 0.71875rem; /* 11.5px */
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease, transform 120ms ease;
+}
+
+.ow-pill-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.14);
+  color: var(--fg, #171614);
+}
+
+:root[data-theme="dark"] .ow-pill-btn,
+.dark .ow-pill-btn {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-secondary-dark, #dedcd5);
+}
+
+:root[data-theme="dark"] .ow-pill-btn:hover,
+.dark .ow-pill-btn:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--text-primary-dark, #f5f4f0);
+}
+
+/* 5. Pulsing Glowing Green Connection LED */
+.ow-led-container {
+  position: relative;
+  display: inline-flex;
+  width: 9px;
+  height: 9px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 2px;
+  flex-shrink: 0;
+}
+
+.ow-led-pulse {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  background-color: #34d399;
+  opacity: 0.75;
+  animation: ow-led-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.ow-led-core {
+  position: relative;
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background-color: var(--ok, #059669);
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.85);
+  z-index: 2;
+}
+
+@keyframes ow-led-ping {
+  70%, 100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* 6. Mode Switcher Segmented Pill Slider Track */
+.ow-mode-slider-track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 25px;
+  padding: 2px;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  flex-shrink: 0;
+}
+
+:root[data-theme="dark"] .ow-mode-slider-track,
+.dark .ow-mode-slider-track {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.ow-mode-slider-item {
+  position: relative;
+  z-index: 10;
+  height: 21px;
+  padding: 0 7px;
+  border-radius: 6px;
+  font-family: var(--font-sans, "Instrument Sans", sans-serif);
+  font-size: 0.6875rem; /* 11px */
+  white-space: nowrap;
+  font-weight: 500;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: var(--muted-fg, #6f6b62);
+  transition: color 150ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ow-mode-slider-item.is-active {
+  color: var(--fg, #171614);
+  font-weight: 600;
+}
+
+:root[data-theme="dark"] .ow-mode-slider-item.is-active,
+.dark .ow-mode-slider-item.is-active {
+  color: #f5f4f0;
+  font-weight: 600;
+}
+
+.ow-mode-slider-indicator {
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  z-index: 1;
+}
+
+:root[data-theme="dark"] .ow-mode-slider-indicator,
+.dark .ow-mode-slider-indicator {
+  background-color: #2c2a27;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* 7. Circular Anthropic Claude Terracotta / Obsidian Send Button */
+.ow-btn-cognac-send,
+.ow-btn-send {
+  position: relative;
+  width: 29px;
+  height: 29px;
+  min-width: 29px;
+  min-height: 29px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ow-btn-cognac-send.is-enabled,
+.ow-btn-send.is-enabled {
+  background-color: var(--primary, #181816);
+  color: var(--primary-fg, #ffffff);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.ow-btn-cognac-send.is-enabled:hover,
+.ow-btn-send.is-enabled:hover {
+  opacity: 0.92;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+  transform: scale(1.05);
+}
+
+.ow-btn-cognac-send.is-enabled:active,
+.ow-btn-send.is-enabled:active {
+  transform: scale(0.95);
+}
+
+:root[data-theme="dark"] .ow-btn-cognac-send.is-enabled,
+:root[data-theme="dark"] .ow-btn-send.is-enabled,
+.dark .ow-btn-cognac-send.is-enabled,
+.dark .ow-btn-send.is-enabled {
+  background-color: var(--primary, #f5f4f0);
+  color: var(--primary-fg, #181816);
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.15);
+}
+
+:root[data-theme="dark"] .ow-btn-cognac-send.is-enabled:hover,
+:root[data-theme="dark"] .ow-btn-send.is-enabled:hover,
+.dark .ow-btn-cognac-send.is-enabled:hover,
+.dark .ow-btn-send.is-enabled:hover {
+  opacity: 0.95;
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.22);
+  transform: scale(1.05);
+}
+
+:root[data-theme="dark"] .ow-btn-cognac-send.is-enabled:active,
+:root[data-theme="dark"] .ow-btn-send.is-enabled:active,
+.dark .ow-btn-cognac-send.is-enabled:active,
+.dark .ow-btn-send.is-enabled:active {
+  transform: scale(0.95);
+}
+
+.ow-btn-cognac-send.is-disabled,
+.ow-btn-send.is-disabled {
+  background-color: var(--muted, rgba(0, 0, 0, 0.05));
+  color: var(--muted-fg, #a09e96);
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+:root[data-theme="dark"] .ow-btn-cognac-send.is-disabled,
+:root[data-theme="dark"] .ow-btn-send.is-disabled,
+.dark .ow-btn-cognac-send.is-disabled,
+.dark .ow-btn-send.is-disabled {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--muted-fg, #716f6a);
+  opacity: 0.4;
+}
+
+/* Stop button state during streaming */
+.ow-btn-stop {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  background-color: var(--err, #e11d48);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(225, 29, 72, 0.35);
+  transition: opacity 140ms ease;
+}
+
+.ow-btn-stop:hover {
+  opacity: 0.9;
+}
+
+/* ── 8. Keyboard Focus-Visible Rings (Standardized Claude Terracotta var(--accent)) ── */
+.ow-pill-btn:focus-visible,
+.ow-mode-slider-item:focus-visible,
+.ow-btn-cognac-send:focus-visible,
+.ow-btn-stop:focus-visible {
+  outline: 2px solid var(--accent) !important;
+  outline-offset: 1px !important;
+  box-shadow: 0 0 0 2px var(--card, #ffffff), 0 0 8px var(--accent-bd) !important;
+}
+
+:root[data-theme="dark"] .ow-pill-btn:focus-visible,
+:root[data-theme="dark"] .ow-mode-slider-item:focus-visible,
+:root[data-theme="dark"] .ow-btn-cognac-send:focus-visible,
+:root[data-theme="dark"] .ow-btn-stop:focus-visible,
+.dark .ow-pill-btn:focus-visible,
+.dark .ow-mode-slider-item:focus-visible,
+.dark .ow-btn-cognac-send:focus-visible,
+.dark .ow-btn-stop:focus-visible {
+  outline: 2px solid var(--accent) !important;
+  outline-offset: 1px !important;
+  box-shadow: 0 0 0 2px var(--bg-surface, #21201D), 0 0 8px var(--accent-bd) !important;
+}
+
+/* ── 9. Mobile Responsive Fluid Adjustments (< 640px) ────────────────────────── */
+@media (max-width: 639px) {
+  .ow-composer-capsule {
+    padding: 0.375rem 0.5rem;
+    border-radius: 1.125rem;
+    min-height: 40px;
+  }
+
+  .ow-composer-row {
+    gap: 0.25rem;
+  }
+
+  .ow-composer-toolbar {
+    gap: 0.25rem;
+  }
+
+  .ow-pill-btn {
+    padding: 0 0.375rem;
+    font-size: 0.6875rem;
+  }
+
+  .ow-mode-slider-item {
+    padding: 0 0.375rem;
+    font-size: 0.6875rem;
+  }
+}

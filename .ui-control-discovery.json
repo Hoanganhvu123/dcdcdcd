@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "app": "DB-GPT",
+  "identifier": "com.dbgpt.web",
+  "platform": "linux",
+  "baseUrl": "http://localhost:3000/api/ui-control",
+  "wsUrl": "ws://localhost:3000/api/ui-control/ws",
+  "port": 3000,
+  "createdAt": "2026-09-22T02:33:24.817Z"
+}

@@ -1,0 +1,132 @@
+/**
+ * OpenWork Shell & Responsive Mobile Drawer Styles
+ * DB-GPT Analyst Studio — Canifa Editorial Design DNA
+ */
+
+/* ── 1. Shell Root Layout ── */
+.ow-shell-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--bg-base, #FAF9F5);
+  color: var(--fg-primary, #1E1E1C);
+  font-family: var(--font-sans, "Instrument Sans", system-ui, sans-serif);
+  overflow: hidden;
+  user-select: none;
+}
+
+:root[data-theme="dark"] .ow-shell-container,
+.dark .ow-shell-container {
+  background-color: var(--bg-base, #181816);
+  color: var(--fg-primary, #F4F3ED);
+}
+
+/* ── 2. Desktop In-Flow Sidebar Wrapper (>= 768px in-flow, < 768px hidden) ── */
+.ow-shell-sidebar-desktop {
+  display: flex;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+  .ow-shell-sidebar-desktop {
+    display: none !important;
+  }
+}
+
+/* ── 3. Mobile Slide-Over Drawer Overlays (< 768px) ── */
+.ow-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 40;
+}
+
+.ow-drawer-panel {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 50;
+  width: 280px;
+  max-width: 85vw;
+  height: 100%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  background-color: var(--bg-surface, #FFFFFF);
+  border-right: 1px solid var(--border-subtle, #E6E4DD);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+:root[data-theme="dark"] .ow-drawer-panel,
+.dark .ow-drawer-panel {
+  background-color: var(--bg-surface, #21201D);
+  border-right-color: var(--border-subtle, #33322E);
+}
+
+/* In the mobile drawer panel, enforce full width and remove redundant border */
+.ow-drawer-panel .ow-sb-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  border-right: none !important;
+  height: 100% !important;
+}
+
+/* ── 4. Main View Canvas ── */
+.ow-shell-main {
+  flex: 1 1 0%;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ── 5. Mobile Fallback Navigation Header (for non-chat subviews) ── */
+.ow-shell-mobile-nav {
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  border-bottom: 1px solid var(--border-subtle, #E6E4DD);
+  background-color: rgba(250, 249, 245, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  flex-shrink: 0;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+:root[data-theme="dark"] .ow-shell-mobile-nav,
+.dark .ow-shell-mobile-nav {
+  border-bottom-color: var(--border-subtle, #33322E);
+  background-color: rgba(24, 24, 22, 0.95);
+}
+
+@media (min-width: 768px) {
+  .ow-shell-mobile-nav {
+    display: none !important;
+  }
+}
+
+/* ── 6. Keyboard Focus-Visible Rings (Terracotta var(--accent)) ── */
+.ow-shell-mobile-nav button:focus-visible,
+.ow-shell-container button[aria-label="Toggle Sidebar"]:focus-visible,
+.ow-shell-container button[aria-label="Mở menu điều hướng"]:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 2px var(--card, #ffffff), 0 0 0 4px var(--accent) !important;
+}
+
+:root[data-theme="dark"] .ow-shell-mobile-nav button:focus-visible,
+:root[data-theme="dark"] .ow-shell-container button[aria-label="Toggle Sidebar"]:focus-visible,
+:root[data-theme="dark"] .ow-shell-container button[aria-label="Mở menu điều hướng"]:focus-visible,
+.dark .ow-shell-mobile-nav button:focus-visible,
+.dark .ow-shell-container button[aria-label="Toggle Sidebar"]:focus-visible,
+.dark .ow-shell-container button[aria-label="Mở menu điều hướng"]:focus-visible {
+  box-shadow: 0 0 0 2px var(--bg-surface, #21201D), 0 0 0 4px var(--accent) !important;
+}
+

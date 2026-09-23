@@ -1,0 +1,1 @@
+# subgraphs/adapters/__init__.py — Adapter layer: map SubgraphState <-> MainAgentState.

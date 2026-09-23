@@ -1,0 +1,6 @@
+# Copied out of node_modules by the copyObWorkers plugin in vite.config.ts.
+public/ob-workers/
+dist/
+node_modules/
+.env*
+!.env.template

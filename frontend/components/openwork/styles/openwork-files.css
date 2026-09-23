@@ -1,0 +1,249 @@
+/* ── OpenWork files explorer ───────────────────────────────────────────────
+   The workspace file tree, on the same ladder as the rest of the workbench:
+   Instrument Sans rows, JetBrains Mono for names and counts, gold only on
+   the active/accent chip. Geometry transcribed in hard px off the Shadcn
+   Workspace reference; families and colours stay Classical. */
+
+.ow-fx {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--bg-base, #FAF9F5);
+}
+
+/* ── search strip ───────────────────────────────────────────────────────── */
+.ow-fx-head {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-subtle, #E6E4DD);
+  background: #ffffff;
+}
+
+.ow-fx-search {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.ow-fx-search-icon {
+  position: absolute;
+  left: 8px;
+  flex: none;
+  color: var(--color-text-muted, #7d7979);
+  pointer-events: none;
+}
+
+.ow-fx-input {
+  width: 100%;
+  height: 26px;
+  padding: 0 8px 0 25px;
+  border: 1px solid var(--border-subtle, #E6E4DD);
+  border-radius: 6px;
+  background: var(--bg-muted, #F3F2EC);
+  color: var(--color-text, #201f1d);
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.6875rem;
+  line-height: 1;
+  outline: none;
+}
+
+.ow-fx-input::placeholder { color: var(--color-text-muted, #7d7979); }
+
+.ow-fx-input:focus-visible {
+  border-color: var(--accent-bd);
+  background: #ffffff;
+}
+
+.ow-fx-count {
+  flex: none;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 6px;
+  border: 1px solid var(--color-divider, #edecea);
+  border-radius: 4px;
+  color: var(--color-text-muted, #7d7979);
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.625rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── tree ───────────────────────────────────────────────────────────────── */
+.ow-fx-tree {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ow-fx-section { display: flex; flex-direction: column; gap: 2px; }
+
+.ow-fx-section-head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  height: 22px;
+  padding: 0 6px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--color-text-muted, #7d7979);
+  cursor: pointer;
+}
+
+.ow-fx-section-head:hover { color: var(--color-text, #201f1d); }
+
+.ow-fx-section-head:focus-visible {
+  outline: 1px solid var(--accent, #CC785C);
+  outline-offset: 1px;
+}
+
+.ow-fx-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ow-fx-section-count {
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.625rem;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── rows ───────────────────────────────────────────────────────────────── */
+.ow-fx-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 34px;
+  padding: 5px 8px;
+  border-radius: 7px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.ow-fx-row:hover { background: #ffffff; }
+
+.ow-fx-row:focus-visible {
+  outline: 1px solid var(--accent, #CC785C);
+  outline-offset: -1px;
+}
+
+.ow-fx-row.is-active {
+  background: var(--accent-soft);
+}
+
+.ow-fx-row-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.ow-fx-icon { flex: none; color: var(--color-text-muted, #7d7979); }
+.ow-fx-row:hover .ow-fx-icon,
+.ow-fx-row.is-active .ow-fx-icon { color: var(--accent, #CC785C); }
+
+.ow-fx-row-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+
+.ow-fx-name {
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.71875rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-text, #201f1d);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ow-fx-sub {
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 0.6875rem;
+  line-height: 1.2;
+  color: var(--color-text-muted, #7d7979);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ow-fx-chip {
+  flex: none;
+  height: 17px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 5px;
+  border: 1px solid var(--color-divider, #edecea);
+  border-radius: 4px;
+  color: var(--color-text-muted, #7d7979);
+  font-family: var(--font-mono, 'Geist Mono', monospace);
+  font-size: 0.625rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.ow-fx-chip--live {
+  border-color: var(--color-accent-200, #ffe3bf);
+  background: var(--color-gold-tint, #fffaf2);
+  color: var(--color-accent-700, #da7756);
+}
+
+/* ── empty ──────────────────────────────────────────────────────────────── */
+.ow-fx-empty {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 24px;
+  text-align: center;
+}
+
+.ow-fx-empty-title {
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  color: var(--color-text, #201f1d);
+}
+
+.ow-fx-empty-text {
+  max-width: 280px;
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--color-text-secondary, #605d5d);
+}
+
+.ow-fx-section-empty {
+  padding: 4px 8px 6px;
+  font-family: var(--font-sans, Geist, ui-sans-serif, system-ui, sans-serif);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--color-text-muted, #7d7979);
+}
